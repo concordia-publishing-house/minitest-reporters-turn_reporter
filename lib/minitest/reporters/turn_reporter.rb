@@ -3,7 +3,7 @@ require "minitest/reporters"
 
 module Minitest
   module Reporters
-    
+
     # Turn-like reporter that reads like a spec.
     #
     # Based upon TwP's turn (MIT License) and paydro's monkey-patch.
@@ -16,7 +16,7 @@ module Minitest
 
       def start
         super
-        puts "Started"
+        puts "Run Options: #{options[:args]}"
         puts
       end
 
@@ -49,7 +49,7 @@ module Minitest
           puts
         end
       end
-      
+
       def print_colored_status(test)
         if test.passed?
           print(green { pad_mark( result(test).to_s.upcase ) })
@@ -79,6 +79,11 @@ module Minitest
       end
 
       def after_suite(suite)
+        puts
+        puts
+        puts "To run the test suite again with the same options use:"
+        puts
+        puts "  rake test TESTOPTS=\"#{options[:args]}\""
         puts
       end
 
