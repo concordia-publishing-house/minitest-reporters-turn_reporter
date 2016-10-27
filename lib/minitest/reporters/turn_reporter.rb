@@ -22,6 +22,11 @@ module Minitest
 
       def report
         super
+        puts
+        puts "To run the test suite again with the same options use:"
+        puts
+        puts "  rake test TESTOPTS=\"#{options[:args]}\""
+        puts
         puts "Finished in %.5fs" % total_time
         print "\e[37m%d tests\e[0m" % count
         print ", "
@@ -79,11 +84,6 @@ module Minitest
       end
 
       def after_suite(suite)
-        puts
-        puts
-        puts "To run the test suite again with the same options use:"
-        puts
-        puts "  rake test TESTOPTS=\"#{options[:args]}\""
         puts
       end
 
